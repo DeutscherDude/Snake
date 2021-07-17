@@ -11,7 +11,7 @@ namespace Snake
         /// <summary>
         /// Clean up any resources being used.
         /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise,    false.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -29,7 +29,6 @@ namespace Snake
         /// </summary>
         private void InitializeComponent()
         {
-            this.directoryEntry1 = new System.DirectoryServices.DirectoryEntry();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -61,8 +60,6 @@ namespace Snake
         }
 
         #endregion
-
-        private System.DirectoryServices.DirectoryEntry directoryEntry1;
         private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
