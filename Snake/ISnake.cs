@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Drawing;
 
 namespace Snake
 {
@@ -11,5 +12,6 @@ namespace Snake
         bool isSnake { get; set; }
 
         void ChangeColor(ColorSet color);
+        Color TileColor { get; set; }
     }
 }
