@@ -17,6 +17,8 @@ namespace Snake
         List<Tile> tiles;
         int _width;
         int _height;
+        SnakeItself head;
+        Direction currentDirection = Direction.Up;
 
         public Form1()
             : base()
@@ -27,6 +29,7 @@ namespace Snake
             _width = gamePanel.Width;
             _height = gamePanel.Height;
             tiles = generateTiles();
+            generateHead();
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -35,16 +38,12 @@ namespace Snake
 
         }
 
-        private void gamePanel_Paint(object sender, PaintEventArgs e)
+        private void generateHead()
         {
-            SolidBrush tempB = new SolidBrush(Color.Red);
-            // namaluj se
-            foreach(var tile in tiles)
-            {
-                graphics.FillRectangle(tempB, tile.getTile());
-            }    
+            head = new SnakeItself((_width / 2) - 32, (_height / 2) - 32);
 
         }
+
         private List<Tile> generateTiles()
         {
             List<Tile> result = new List<Tile>();
@@ -67,17 +66,45 @@ namespace Snake
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {
             var button = keyData;
-            if (keyData == Keys.Down || keyData == Keys.Up || keyData == Keys.Left || keyData == Keys.Right)
+            if (keyData == Keys.Down || keyData == Keys.S)
             {
-                MessageConsole.LogMessage("XD " + keyData);
+                currentDirection = Direction.Down;
+                MessageConsole.LogMessage($"Changed Direction to {currentDirection}");
                 return true;
             }
-            else if (keyData == Keys.W || keyData == Keys.S || keyData == Keys.D || keyData == Keys.A)
+            if (keyData == Keys.Up || keyData == Keys.W)
             {
-                MessageConsole.LogMessage("XD " + keyData);
+                currentDirection = Direction.Up;
+                MessageConsole.LogMessage($"Changed Direction to {currentDirection}");
+                return true;
+            }
+            if (keyData == Keys.Left || keyData == Keys.A)
+            {
+                currentDirection = Direction.Left;
+                MessageConsole.LogMessage($"Changed Direction to {currentDirection}");
+                return true;
+            }
+            if (keyData == Keys.Right || keyData == Keys.D)
+            {
+                currentDirection = Direction.Right;
+                MessageConsole.LogMessage($"Changed Direction to {currentDirection}");
                 return true;
             }
             return base.ProcessCmdKey(ref msg, keyData);
+        }
+
+        private void gameLoop_Tick(object sender, EventArgs e)
+        {
+            foreach (var tile in tiles)
+            {
+                if (head.GetCurrentPos() == tile.getTile())
+                {
+                    tile.isSnake = true;
+                }
+                tile.CheckState();
+                graphics.FillRectangle(new SolidBrush(tile.TileColor), tile.getTile());
+            }
+            head.Move(currentDirection);
         }
     }
 }

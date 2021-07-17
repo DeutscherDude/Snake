@@ -7,24 +7,41 @@ using System.Threading.Tasks;
 
 namespace Snake
 {
-    class SnakeItself : ISnake
+    class SnakeItself
     {
-        private int initX;
-        private int initY;
+        private int x;
+        private int y;
+        public int Length { get; set; }
 
-        public SnakeItself()
+        public SnakeItself(int x, int y)
         {
-            this.initX = 2;
-            this.initY = 3;
+            this.x = x;
+            this.y = y;
         }
 
-        public bool isSnake { get; set; }
-
-        public Color TileColor { get; set; }
-
-        public void ChangeColor(ColorSet color)
+        public Rectangle GetCurrentPos()
         {
-            TileColor = Color.Green;
+            return new Rectangle(x, y, 32, 32);
+        }
+
+        public void Move(Direction direction)
+        {
+            switch(direction)
+            {
+                case Direction.Up:
+                    y -= 32;
+                    break;    
+                case Direction.Down:
+                    y += 32;
+                    break;
+                case Direction.Left:
+                    x -= 32;
+                    break;
+                case Direction.Right:
+                    x += 32;
+                    break;
+
+            }
         }
     }
 }

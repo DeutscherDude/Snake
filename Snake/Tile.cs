@@ -16,6 +16,7 @@ namespace Snake
 
         public Color TileColor { get; set; }
         public bool isSnake { get; set; }
+        public bool isApple { get; set; }
 
         public Tile(int x, int y, int width, int height)
         {
@@ -23,6 +24,16 @@ namespace Snake
             this.y = y;
             this.width = width;
             this.height = height;
+        }
+
+        public void CheckState()
+        {
+            if (isSnake)
+                ChangeColor(ColorSet.Snake);
+            else if (isApple)
+                ChangeColor(ColorSet.Apple);
+            else
+                ChangeColor(ColorSet.Field);
         }
 
         public Rectangle getTile()
