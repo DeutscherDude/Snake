@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Runtime.InteropServices;
 
 namespace Snake
 {
@@ -57,7 +58,8 @@ namespace Snake
 
         private void button1_Click(object sender, EventArgs e)
         {
-            this.Close();
+            MessageConsole.LogMessage("Chuj");
+            //this.Close();
         }
     }
 }

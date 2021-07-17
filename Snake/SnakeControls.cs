@@ -30,7 +30,9 @@ namespace Snake
         {
             if(e.Key == Key.Down)
             {
-                Console.WriteLine("Code to go X will be here");
+                string message = "Button has been pressed";
+
+                MessageConsole.LogMessage(message);
             }
 
         }
