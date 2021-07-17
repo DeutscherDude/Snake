@@ -29,8 +29,10 @@ namespace Snake
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.gamePanel = new System.Windows.Forms.Panel();
             this.exit = new System.Windows.Forms.Button();
+            this.gameLoop = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // gamePanel
@@ -52,6 +54,11 @@ namespace Snake
             this.exit.Text = "Exit";
             this.exit.UseVisualStyleBackColor = true;
             this.exit.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // gameLoop
+            // 
+            this.gameLoop.Enabled = true;
+            this.gameLoop.Tick += new System.EventHandler(this.gameLoop_Tick);
             // 
             // Form1
             // 
@@ -76,6 +83,7 @@ namespace Snake
         #endregion
         private System.Windows.Forms.Panel gamePanel;
         private System.Windows.Forms.Button exit;
+        private System.Windows.Forms.Timer gameLoop;
     }
 }
 
