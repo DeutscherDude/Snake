@@ -63,16 +63,21 @@ namespace Snake
         {
             this.Close();
         }
-
-        private void Form1_KeyDown(object sender, KeyEventArgs e)
+ 
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {
-            if (e.KeyCode == Keys.Up)
+            var button = keyData;
+            if (keyData == Keys.Down || keyData == Keys.Up || keyData == Keys.Left || keyData == Keys.Right)
             {
-                string message = "Button has been pressed";
-
-                MessageConsole.LogMessage(message);
-                e.Handled = false;
+                MessageConsole.LogMessage("XD " + keyData);
+                return true;
             }
+            else if (keyData == Keys.W || keyData == Keys.S || keyData == Keys.D || keyData == Keys.A)
+            {
+                MessageConsole.LogMessage("XD " + keyData);
+                return true;
+            }
+            return base.ProcessCmdKey(ref msg, keyData);
         }
     }
 }
