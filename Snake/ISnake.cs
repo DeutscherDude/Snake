@@ -10,6 +10,6 @@ namespace Snake
     {
         bool isSnake { get; set; }
 
-        void ChangeColor();
+        void ChangeColor(ColorSet color);
     }
 }

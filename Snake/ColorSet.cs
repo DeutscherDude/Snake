@@ -1,6 +1,9 @@
-﻿namespace Snake
+﻿using System;
+using System.Drawing;
+
+namespace Snake
 {
-    enum ColorSet
+    enum ColorSet 
     {
         Snake,
         Field,

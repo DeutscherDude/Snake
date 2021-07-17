@@ -30,9 +30,20 @@ namespace Snake
             return new Rectangle(x, y, width, height);
         }
 
-        public void ChangeColor()
+        public void ChangeColor(ColorSet color)
         {
-            throw new NotImplementedException();
+            switch(color)
+            {
+                case ColorSet.Snake:
+                    TileColor = Color.Green;
+                    break;
+                case ColorSet.Field:
+                    TileColor = Color.Gray;
+                    break;
+                case ColorSet.Apple:
+                    TileColor = Color.Tomato;
+                    break;
+            }
         }
     }
 }
