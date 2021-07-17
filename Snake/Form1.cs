@@ -19,12 +19,10 @@ namespace Snake
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            //Chuj w dupie kurwa
+            
         }
 
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
 
-        }
+
     }
 }
