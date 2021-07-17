@@ -19,10 +19,12 @@ namespace Snake
         {
             InitializeComponent();
             graphics = gamePanel.CreateGraphics();
-            generateTiles();
+            _width = gamePanel.Width;
+            _height = gamePanel.Height;
+            tiles = generateTiles();
         }
-        int _width = 16;
-        int _height = 16;
+        int _width;
+        int _height;
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -31,18 +33,31 @@ namespace Snake
 
         private void gamePanel_Paint(object sender, PaintEventArgs e)
         {
+            SolidBrush tempB = new SolidBrush(Color.Red);
             // namaluj se
-        }
-        private void generateTiles()
-        {
-            
-            for(int i = 0; i<_height; i++)
+            foreach(var tile in tiles)
             {
-                for(int j=0; j<_width; j++)
+                graphics.FillRectangle(tempB, tile.getTile());
+            }    
+
+        }
+        private List<Tile> generateTiles()
+        {
+            List<Tile> result = new List<Tile>();
+            for(int i = 0; i<_height; i+=32)
+            {
+                for(int j=0; j<_width; j+=32)
                 {
                     // chuj TODO create tiles
+                    result.Add(new Tile(i, j, 32, 32));
                 }
             }
+            return result;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
