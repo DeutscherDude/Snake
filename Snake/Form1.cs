@@ -19,7 +19,9 @@ namespace Snake
         int _height;
 
         public Form1()
+            : base()
         {
+            this.KeyPreview = true;
             InitializeComponent();
             graphics = gamePanel.CreateGraphics();
             _width = gamePanel.Width;
@@ -30,6 +32,7 @@ namespace Snake
         private void Form1_Load(object sender, EventArgs e)
         {
             //Chuj w dupie kurwa 2137
+
         }
 
         private void gamePanel_Paint(object sender, PaintEventArgs e)
@@ -58,8 +61,18 @@ namespace Snake
 
         private void button1_Click(object sender, EventArgs e)
         {
-            MessageConsole.LogMessage("Chuj");
-            //this.Close();
+            this.Close();
+        }
+
+        private void Form1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Up)
+            {
+                string message = "Button has been pressed";
+
+                MessageConsole.LogMessage(message);
+                e.Handled = false;
+            }
         }
     }
 }
