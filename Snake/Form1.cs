@@ -19,10 +19,10 @@ namespace Snake
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            //Chuj w dupie kurwa
+            //Chuj w dupie kurwa 2137
         }
 
-        private void pictureBox1_Click(object sender, EventArgs e)
+        private void gamePanel_Paint(object sender, PaintEventArgs e)
         {
 
         }
