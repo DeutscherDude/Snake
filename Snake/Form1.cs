@@ -14,6 +14,8 @@ namespace Snake
     {
         Graphics graphics;
         List<Tile> tiles;
+        int _width;
+        int _height;
 
         public Form1()
         {
@@ -23,8 +25,6 @@ namespace Snake
             _height = gamePanel.Height;
             tiles = generateTiles();
         }
-        int _width;
-        int _height;
 
         private void Form1_Load(object sender, EventArgs e)
         {
