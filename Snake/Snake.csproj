@@ -52,6 +52,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Direction.cs" />
     <Compile Include="MessageConsole.cs" />
     <Compile Include="SnakeControls.cs" />
     <Compile Include="ColorSet.cs" />

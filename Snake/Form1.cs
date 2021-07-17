@@ -17,6 +17,8 @@ namespace Snake
         List<Tile> tiles;
         int _width;
         int _height;
+        SnakeItself head;
+        Direction currentDirection = Direction.Up;
 
         public Form1()
             : base()
@@ -27,6 +29,7 @@ namespace Snake
             _width = gamePanel.Width;
             _height = gamePanel.Height;
             tiles = generateTiles();
+            generateHead();
         }
 
         private void Form1_Load(object sender, EventArgs e)
