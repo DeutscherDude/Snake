@@ -42,7 +42,6 @@ namespace Snake
             this.gamePanel.Name = "gamePanel";
             this.gamePanel.Size = new System.Drawing.Size(512, 512);
             this.gamePanel.TabIndex = 1;
-            this.gamePanel.Paint += new System.Windows.Forms.PaintEventHandler(this.gamePanel_Paint);
             // 
             // exit
             // 
