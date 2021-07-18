@@ -11,12 +11,13 @@ namespace Snake
     {
         private int x;
         private int y;
-        public int Length { get; set; }
+        public int Length;
 
         public SnakeItself(int x, int y)
         {
             this.x = x;
             this.y = y;
+            this.Length = 0;
         }
 
         public Rectangle GetCurrentPos()
@@ -24,6 +25,12 @@ namespace Snake
             return new Rectangle(x, y, 32, 32);
         }
         
+        public int SnakeLength()
+        {
+            Length += 1;
+            return Length;
+        }
+
         public void Move(Direction direction)
         {
             switch(direction)
@@ -41,6 +48,7 @@ namespace Snake
                     x += 32;
                     break;
             }
+            
         }
     }
 }
