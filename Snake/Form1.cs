@@ -43,7 +43,7 @@ namespace Snake
 
         private void generateHead()
         {
-            head = new SnakeItself((_width / 2) - 32, (_height / 2) - 32);
+            head = new SnakeItself(_width, _height);
 
         }
 
