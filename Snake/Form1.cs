@@ -19,6 +19,8 @@ namespace Snake
         int _height;
         SnakeItself head;
         Direction currentDirection = Direction.Up;
+        List<int> snakeIndexes;
+        private int length = 4;
 
         public Form1()
             : base()
@@ -29,6 +31,7 @@ namespace Snake
             _width = gamePanel.Width;
             _height = gamePanel.Height;
             tiles = generateTiles();
+            snakeIndexes = new List<int>();
             generateHead();
         }
 
@@ -75,14 +78,40 @@ namespace Snake
         {
             foreach (var tile in tiles)
             {
-                if (head.GetCurrentPos() == tile.getTile())
+                // adding tail
+                if(isHeadTile(tile))
                 {
-                    tile.isSnake = true;
+                    snakeIndexes.Insert(0, tiles.IndexOf(tile));
                 }
+
+                removeTail();
+
                 tile.CheckState();
                 graphics.FillRectangle(new SolidBrush(tile.TileColor), tile.getTile());
             }
             head.Move(currentDirection);
+        }
+
+        private bool isHeadTile(Tile tile)
+        {
+            if (head.GetCurrentPos() == tile.getTile())
+            {
+                tile.isSnake = true;
+                return true;
+            }
+            else
+                return false;
+        }
+
+        private void removeTail()
+        {
+            int lastIndex = snakeIndexes.Count();
+            if(lastIndex > length)
+            {
+
+                tiles[snakeIndexes[lastIndex-1]].isSnake = false;
+                snakeIndexes.RemoveAt(lastIndex-1);
+            }
         }
     }
 }
