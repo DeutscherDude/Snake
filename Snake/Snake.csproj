@@ -54,6 +54,7 @@
   <ItemGroup>
     <Compile Include="Direction.cs" />
     <Compile Include="MessageConsole.cs" />
+    <Compile Include="MovingHandler.cs" />
     <Compile Include="SnakeControls.cs" />
     <Compile Include="ColorSet.cs" />
     <Compile Include="Form1.cs">

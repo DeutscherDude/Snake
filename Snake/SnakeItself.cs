@@ -23,7 +23,7 @@ namespace Snake
         {
             return new Rectangle(x, y, 32, 32);
         }
-
+        
         public void Move(Direction direction)
         {
             switch(direction)
@@ -40,7 +40,6 @@ namespace Snake
                 case Direction.Right:
                     x += 32;
                     break;
-
             }
         }
     }

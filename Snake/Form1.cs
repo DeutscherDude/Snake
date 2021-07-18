@@ -66,32 +66,10 @@ namespace Snake
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {
             var button = keyData;
-            if (keyData == Keys.Down || keyData == Keys.S)
-            {
-                currentDirection = Direction.Down;
-                MessageConsole.LogMessage($"Changed Direction to {currentDirection}");
-                return true;
-            }
-            if (keyData == Keys.Up || keyData == Keys.W)
-            {
-                currentDirection = Direction.Up;
-                MessageConsole.LogMessage($"Changed Direction to {currentDirection}");
-                return true;
-            }
-            if (keyData == Keys.Left || keyData == Keys.A)
-            {
-                currentDirection = Direction.Left;
-                MessageConsole.LogMessage($"Changed Direction to {currentDirection}");
-                return true;
-            }
-            if (keyData == Keys.Right || keyData == Keys.D)
-            {
-                currentDirection = Direction.Right;
-                MessageConsole.LogMessage($"Changed Direction to {currentDirection}");
-                return true;
-            }
+            currentDirection = MovingHandler.GetDirection(keyData, currentDirection);
             return base.ProcessCmdKey(ref msg, keyData);
         }
+
 
         private void gameLoop_Tick(object sender, EventArgs e)
         {

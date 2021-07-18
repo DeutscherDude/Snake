@@ -7,34 +7,12 @@ using System.Windows.Input;
 
 namespace Snake
 {
-    class SnakeControls
+    enum MovementButtons
     {
-        //    26, -down
-        //    24, -up
-        //    23, -left
-        //    25  -right
-
-        protected enum MovementButtons
-        {
-            down,
-            up,
-            left,
-            right
-        };
-
-        private Key button = Key.Down;
-
-        protected Key Button { get => button; set => button = value; }
-
-        private void OnMovementKeyStrokeHandler(object sender, KeyEventArgs e)
-        {
-            if(e.Key == Key.Down)
-            {
-                string message = "Button has been pressed";
-
-                MessageConsole.LogMessage(message);
-            }
-
-        }
-    }
+        Down,
+        S,
+        Up,
+        Left,
+        Right
+    };
 }
