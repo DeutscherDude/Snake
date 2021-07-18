@@ -15,12 +15,16 @@ namespace Snake
     {
         Graphics graphics;
         List<Tile> tiles;
+        SnakeItself head;
+        
+        List<int> snakeIndexes;
+
         int _width;
         int _height;
-        SnakeItself head;
-        Direction currentDirection = Direction.Up;
-        List<int> snakeIndexes;
         private int length = 4;
+        public bool AppleExists = false;
+
+        Direction currentDirection = Direction.Up;
 
         public Form1()
             : base()
@@ -85,13 +89,15 @@ namespace Snake
                 }
 
                 removeTail();
-
                 tile.CheckState();
                 graphics.FillRectangle(new SolidBrush(tile.TileColor), tile.getTile());
             }
+            if (AppleExists == false)
+            {
+                AppleGenerator.Generate(tiles);
+                AppleExists = true;
+            }
             head.Move(currentDirection);
-            head.SnakeLength();
-            Console.WriteLine(head.Length);
         }
 
         private bool isHeadTile(Tile tile)
@@ -110,7 +116,6 @@ namespace Snake
             int lastIndex = snakeIndexes.Count();
             if(lastIndex > length)
             {
-
                 tiles[snakeIndexes[lastIndex-1]].isSnake = false;
                 snakeIndexes.RemoveAt(lastIndex-1);
             }
