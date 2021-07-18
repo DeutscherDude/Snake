@@ -22,6 +22,8 @@ namespace Snake
         List<int> snakeIndexes;
         private int length = 4;
 
+        private bool isPressed = false;
+
         public Form1()
             : base()
         {
@@ -68,9 +70,17 @@ namespace Snake
  
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {
-            var button = keyData;
-            currentDirection = MovingHandler.GetDirection(keyData, currentDirection);
-            return base.ProcessCmdKey(ref msg, keyData);
+            if(isPressed == false)
+            {
+                isPressed = true;
+                var button = keyData;
+                currentDirection = MovingHandler.GetDirection(keyData, currentDirection);
+                return base.ProcessCmdKey(ref msg, keyData);
+            }
+            else
+            {
+                return false;
+            }
         }
 
 
@@ -92,6 +102,9 @@ namespace Snake
             head.Move(currentDirection);
             head.SnakeLength();
             Console.WriteLine(head.Length);
+
+
+            isPressed = false; // HAVE TO BE LAST!
         }
 
         private bool isHeadTile(Tile tile)
