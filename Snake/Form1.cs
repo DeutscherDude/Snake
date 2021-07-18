@@ -90,6 +90,8 @@ namespace Snake
                 graphics.FillRectangle(new SolidBrush(tile.TileColor), tile.getTile());
             }
             head.Move(currentDirection);
+            head.SnakeLength();
+            Console.WriteLine(head.Length);
         }
 
         private bool isHeadTile(Tile tile)
