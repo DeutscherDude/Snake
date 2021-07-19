@@ -138,7 +138,16 @@ namespace Snake
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            gameLoop.Enabled = false;
+            if (gameLoop.Enabled == true)
+            {
+                gameLoop.Enabled = false;   
+                Pause.Text = "Unpause"; 
+            }
+            else if (gameLoop.Enabled == false)
+            {
+                Pause.Text = "Pause";
+                gameLoop.Enabled = true;
+            }
         }
     }
 }
