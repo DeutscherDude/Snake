@@ -58,7 +58,6 @@ namespace Snake
             // 
             // gameLoop
             // 
-            this.gameLoop.Enabled = true;
             this.gameLoop.Tick += new System.EventHandler(this.gameLoop_Tick);
             // 
             // Pause
