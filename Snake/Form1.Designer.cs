@@ -33,6 +33,8 @@ namespace Snake
             this.gamePanel = new System.Windows.Forms.Panel();
             this.exit = new System.Windows.Forms.Button();
             this.gameLoop = new System.Windows.Forms.Timer(this.components);
+            this.Pause = new System.Windows.Forms.Button();
+            this.Start = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // gamePanel
@@ -59,6 +61,28 @@ namespace Snake
             this.gameLoop.Enabled = true;
             this.gameLoop.Tick += new System.EventHandler(this.gameLoop_Tick);
             // 
+            // Pause
+            // 
+            this.Pause.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Pause.Location = new System.Drawing.Point(108, 665);
+            this.Pause.Name = "Pause";
+            this.Pause.Size = new System.Drawing.Size(75, 23);
+            this.Pause.TabIndex = 3;
+            this.Pause.Text = "Pause";
+            this.Pause.UseVisualStyleBackColor = true;
+            this.Pause.Click += new System.EventHandler(this.button1_Click_1);
+            // 
+            // Start
+            // 
+            this.Start.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Start.Location = new System.Drawing.Point(202, 665);
+            this.Start.Name = "Start";
+            this.Start.Size = new System.Drawing.Size(75, 23);
+            this.Start.TabIndex = 4;
+            this.Start.Text = "Start";
+            this.Start.UseVisualStyleBackColor = true;
+            this.Start.Click += new System.EventHandler(this.button2_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -66,6 +90,8 @@ namespace Snake
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.SystemColors.ControlDark;
             this.ClientSize = new System.Drawing.Size(536, 700);
+            this.Controls.Add(this.Start);
+            this.Controls.Add(this.Pause);
             this.Controls.Add(this.exit);
             this.Controls.Add(this.gamePanel);
             this.ForeColor = System.Drawing.SystemColors.ControlText;
@@ -83,6 +109,8 @@ namespace Snake
         private System.Windows.Forms.Panel gamePanel;
         private System.Windows.Forms.Button exit;
         private System.Windows.Forms.Timer gameLoop;
+        private System.Windows.Forms.Button Pause;
+        private System.Windows.Forms.Button Start;
     }
 }
 
