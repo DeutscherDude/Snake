@@ -91,15 +91,12 @@ namespace Snake
         {
             foreach (var tile in tiles)
             {
-                // adding tail
                 if (isHeadTile(tile))
                 {
                     tile.isHead = true;
-                    tile.isSnake = false;
                     snakeIndexes.Insert(0, tiles.IndexOf(tile));
                 }
-
-                if(Collision.CheckAppleCollision(tile, head.GetCurrentPos()))
+                if (Collision.CheckAppleCollision(tile, head.GetCurrentPos()))
                 {
                     Eating();
                 }
@@ -108,10 +105,12 @@ namespace Snake
                     Death();
                 }
 
+                // adding tail
+                
                 removeTail();
                 tile.CheckState();
                 graphics.FillRectangle(new SolidBrush(tile.TileColor), tile.getTile());
-                if (isHeadTile(tile))
+               if(tile.isHead)
                 {
                     tile.isHead = false;
                     tile.isSnake = true;
@@ -124,6 +123,7 @@ namespace Snake
                 AppleExists = true;
             }
             head.Move(currentDirection);
+
             isPressed = false; // HAVE TO BE LAST!
         }
 
@@ -145,7 +145,6 @@ namespace Snake
         {
             if (head.GetCurrentPos() == tile.getTile())
             {
-                tile.isSnake = true;
                 return true;
             }
             else
