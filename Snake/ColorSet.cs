@@ -6,6 +6,7 @@ namespace Snake
     public enum ColorSet 
     {
         Snake,
+        SnakeH,
         Field,
         Apple,
     }

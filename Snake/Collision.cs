@@ -9,23 +9,26 @@ namespace Snake
 {
     public static class Collision
     {
-        public static CollisonType CheckCollision(Tile tile, Rectangle rect)
+        public static bool CheckAppleCollision(Tile tile, Rectangle rect)
         {
-            if (tile.getTile() == rect)
+            if(tile.isApple)
             {
-                if (tile.isSnake)
-                    return CollisonType.Eat;
-                else if (tile.isApple)
-                    return CollisonType.Death;
+                if (tile.getTile() == rect)
+                {
+                    MessageConsole.LogMessage("XD");
+                    tile.isApple = false;
+                    return true;
+                }
             }
-            return CollisonType.Field;
+            return false;
         }
-    }
-
-    public enum CollisonType
-    {
-        Eat,
-        Death,
-        Field,
+        public static bool CheckSnakeCollision(Tile tile)
+        {
+            if(tile.isHead && tile.isSnake)
+            {
+                return true;
+            }
+            return false;
+        }
     }
 }
