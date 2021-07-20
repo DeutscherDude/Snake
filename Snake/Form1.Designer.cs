@@ -35,7 +35,7 @@ namespace Snake
             this.gameLoop = new System.Windows.Forms.Timer(this.components);
             this.Pause = new System.Windows.Forms.Button();
             this.Start = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.Counter = new System.Windows.Forms.Panel();
             this.SuspendLayout();
             // 
             // gamePanel
@@ -84,18 +84,14 @@ namespace Snake
             this.Start.UseVisualStyleBackColor = true;
             this.Start.Click += new System.EventHandler(this.button2_Click);
             // 
-            // textBox1
+            // Counter
             // 
-            this.textBox1.Font = new System.Drawing.Font("Georgia", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(349, 546);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.ShortcutsEnabled = false;
-            this.textBox1.Size = new System.Drawing.Size(175, 53);
-            this.textBox1.TabIndex = 5;
-            this.textBox1.Text = "0";
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.Counter.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.Counter.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.Counter.Location = new System.Drawing.Point(374, 530);
+            this.Counter.Name = "Counter";
+            this.Counter.Size = new System.Drawing.Size(150, 50);
+            this.Counter.TabIndex = 5;
             // 
             // Form1
             // 
@@ -104,7 +100,7 @@ namespace Snake
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.SystemColors.ControlDark;
             this.ClientSize = new System.Drawing.Size(536, 700);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.Counter);
             this.Controls.Add(this.Start);
             this.Controls.Add(this.Pause);
             this.Controls.Add(this.exit);
@@ -117,7 +113,6 @@ namespace Snake
             this.Text = "FirstSnake";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -127,7 +122,7 @@ namespace Snake
         private System.Windows.Forms.Timer gameLoop;
         private System.Windows.Forms.Button Pause;
         private System.Windows.Forms.Button Start;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Panel Counter;
     }
 }
 

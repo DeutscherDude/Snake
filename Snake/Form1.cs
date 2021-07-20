@@ -14,6 +14,7 @@ namespace Snake
     public partial class Form1 : Form
     {
         Graphics graphics;
+        Graphics graphicsPoints;
         List<Tile> tiles;
         SnakeItself head;
 
@@ -33,6 +34,7 @@ namespace Snake
             this.KeyPreview = true;
             InitializeComponent();
             graphics = gamePanel.CreateGraphics();
+            graphicsPoints = Counter.CreateGraphics();
             _width = gamePanel.Width;
             _height = gamePanel.Height;
             tiles = generateTiles();
@@ -123,7 +125,7 @@ namespace Snake
                 AppleExists = true;
             }
             head.Move(currentDirection);
-
+            drawPoints();
             isPressed = false; // HAVE TO BE LAST!
         }
 
@@ -181,9 +183,13 @@ namespace Snake
             }
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
+        // counter variables
+        private Font f = new Font("Verdana", 20, FontStyle.Bold);
+        private SolidBrush sb = new SolidBrush(Color.White);
+        private void drawPoints()
         {
-            textBox1.Text = "0";
+            graphicsPoints.Clear(Color.Black); ;
+            graphicsPoints.DrawString((length * 100).ToString(), f, sb, 7, 7);
         }
     }
 }

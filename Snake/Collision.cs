@@ -24,6 +24,7 @@ namespace Snake
         }
         public static bool CheckSnakeCollision(Tile tile)
         {
+          
             if(tile.isHead && tile.isSnake)
             {
                 return true;
