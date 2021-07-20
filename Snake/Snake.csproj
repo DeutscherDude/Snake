@@ -54,6 +54,7 @@
   <ItemGroup>
     <Compile Include="AppleGenerator.cs" />
     <Compile Include="Apples.cs" />
+    <Compile Include="Collision.cs" />
     <Compile Include="Direction.cs" />
     <Compile Include="IApple.cs" />
     <Compile Include="MessageConsole.cs" />

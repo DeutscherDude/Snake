@@ -91,6 +91,9 @@ namespace Snake
         {
             foreach (var tile in tiles)
             {
+                // collision type
+                CollisonType coll = Collision.CheckCollision(tile, head.GetCurrentPos());
+
                 // adding tail
                 if(isHeadTile(tile))
                 {

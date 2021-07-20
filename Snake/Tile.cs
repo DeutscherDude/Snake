@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Snake
 {
-    class Tile : ISnake, IApple
+    public class Tile : ISnake, IApple
     {
         private int x;
         private int y;
