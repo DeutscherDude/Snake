@@ -3,9 +3,10 @@ using System.Drawing;
 
 namespace Snake
 {
-    enum ColorSet 
+    public enum ColorSet 
     {
         Snake,
+        SnakeH,
         Field,
         Apple,
     }

@@ -16,7 +16,7 @@ namespace Snake
         Graphics graphics;
         List<Tile> tiles;
         SnakeItself head;
-        
+
         List<int> snakeIndexes;
 
         int _width;
@@ -26,7 +26,7 @@ namespace Snake
 
         Direction currentDirection = Direction.Up;
 
-		private bool isPressed = false;
+        private bool isPressed = false;
         public Form1()
             : base()
         {
@@ -48,16 +48,16 @@ namespace Snake
 
         private void generateHead()
         {
-             head = new SnakeItself(_width, _height);
+            head = new SnakeItself(_width, _height);
 
         }
 
         private List<Tile> generateTiles()
         {
             List<Tile> result = new List<Tile>();
-            for(int i = 0; i<_height; i+=32)
+            for (int i = 0; i < _height; i += 32)
             {
-                for(int j=0; j<_width; j+=32)
+                for (int j = 0; j < _width; j += 32)
                 {
                     // chuj TODO create tiles
                     result.Add(new Tile(i, j, 32, 32));
@@ -70,10 +70,10 @@ namespace Snake
         {
             this.Close();
         }
- 
+
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {
-            if(isPressed == false)
+            if (isPressed == false)
             {
                 isPressed = true;
                 var button = keyData;
@@ -83,38 +83,68 @@ namespace Snake
             else
             {
                 return false;
-            }        
-         }
+            }
+        }
 
 
         private void gameLoop_Tick(object sender, EventArgs e)
         {
             foreach (var tile in tiles)
             {
-                // adding tail
-                if(isHeadTile(tile))
+                if (isHeadTile(tile))
                 {
+                    tile.isHead = true;
                     snakeIndexes.Insert(0, tiles.IndexOf(tile));
                 }
+                if (Collision.CheckAppleCollision(tile, head.GetCurrentPos()))
+                {
+                    Eating();
+                }
+                if(Collision.CheckSnakeCollision(tile))
+                {
+                    Death();
+                }
 
+                // adding tail
+                
                 removeTail();
                 tile.CheckState();
                 graphics.FillRectangle(new SolidBrush(tile.TileColor), tile.getTile());
+               if(tile.isHead)
+                {
+                    tile.isHead = false;
+                    tile.isSnake = true;
+                }
             }
+
             if (AppleExists == false)
             {
                 AppleGenerator.Generate(tiles);
                 AppleExists = true;
             }
             head.Move(currentDirection);
-			isPressed = false; // HAVE TO BE LAST!
+
+            isPressed = false; // HAVE TO BE LAST!
+        }
+
+        private void Death()
+        {
+            gameLoop.Stop();
+            MessageBox.Show("GAME OVER! / TODO: coś na koniec gry");
+            System.Threading.Thread.Sleep(2000);
+            this.Close();
+        }
+
+        private void Eating()
+        {
+            AppleExists = false;
+            length++;
         }
 
         private bool isHeadTile(Tile tile)
         {
             if (head.GetCurrentPos() == tile.getTile())
             {
-                tile.isSnake = true;
                 return true;
             }
             else
@@ -124,10 +154,10 @@ namespace Snake
         private void removeTail()
         {
             int lastIndex = snakeIndexes.Count();
-            if(lastIndex > length)
+            if (lastIndex > length)
             {
-                tiles[snakeIndexes[lastIndex-1]].isSnake = false;
-                snakeIndexes.RemoveAt(lastIndex-1);
+                tiles[snakeIndexes[lastIndex - 1]].isSnake = false;
+                snakeIndexes.RemoveAt(lastIndex - 1);
             }
         }
 
@@ -141,8 +171,8 @@ namespace Snake
         {
             if (gameLoop.Enabled == true)
             {
-                gameLoop.Enabled = false;   
-                Pause.Text = "Unpause"; 
+                gameLoop.Enabled = false;
+                Pause.Text = "Unpause";
             }
             else if (gameLoop.Enabled == false)
             {

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Snake
 {
-    class Tile : ISnake, IApple
+    public class Tile : ISnake, IApple
     {
         private int x;
         private int y;
@@ -17,6 +17,7 @@ namespace Snake
         public Color TileColor { get; set; }
         public bool isSnake { get; set; }
         public bool isApple { get; set; }
+        public bool isHead { get; set; }
 
         public Tile(int x, int y, int width, int height)
         {
@@ -28,10 +29,12 @@ namespace Snake
 
         public void CheckState()
         {
-            if (isSnake)
-                ChangeColor(ColorSet.Snake);
+            if (isHead)
+                ChangeColor(ColorSet.SnakeH);
             else if (isApple)
                 ChangeColor(ColorSet.Apple);
+            else if (isSnake)
+                ChangeColor(ColorSet.Snake);
             else
                 ChangeColor(ColorSet.Field);
         }
@@ -53,6 +56,9 @@ namespace Snake
                     break;
                 case ColorSet.Apple:
                     TileColor = Color.Tomato;
+                    break;
+                case ColorSet.SnakeH:
+                    TileColor = Color.DarkGreen;
                     break;
             }
         }

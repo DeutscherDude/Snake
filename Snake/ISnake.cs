@@ -10,6 +10,7 @@ namespace Snake
     interface ISnake
     {
         bool isSnake { get; set; }
+        bool isHead { get; set; }
 
         void ChangeColor(ColorSet color);
         Color TileColor { get; set; }
