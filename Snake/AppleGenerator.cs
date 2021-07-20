@@ -14,7 +14,7 @@ namespace Snake
             var rand = new Random();
             do
             {
-                randTile = tiles[rand.Next(0, 16)];
+                randTile = tiles[rand.Next(0, 256)];
                 
             } while (randTile.isSnake);
             randTile.isApple = true;
