@@ -44,6 +44,11 @@ namespace Snake
             return new Rectangle(x, y, width, height);
         }
 
+        //public Elipse GetElipse()
+        //{
+        //    return new Elipse(x, y, width, height);
+        //}
+
         public void ChangeColor(ColorSet color)
         {
             switch(color)

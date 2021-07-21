@@ -24,6 +24,7 @@ namespace Snake
         int _height;
         private int length = 4;
         public bool AppleExists = false;
+        public bool AppleEaten = false;
 
         Direction currentDirection = Direction.Up;
 
@@ -111,8 +112,20 @@ namespace Snake
                 
                 removeTail();
                 tile.CheckState();
-                graphics.FillRectangle(new SolidBrush(tile.TileColor), tile.getTile());
-               if(tile.isHead)
+                if (tile.isApple)
+                {
+                    graphics.FillEllipse(new SolidBrush(tile.TileColor), tile.getTile());
+                }
+                //else if (tile.isHead)
+                //{
+                //    graphics.DrawImage();
+                //}
+                else
+                {
+                    graphics.FillRectangle(new SolidBrush(tile.TileColor), tile.getTile());
+                }
+
+                if (tile.isHead)
                 {
                     tile.isHead = false;
                     tile.isSnake = true;
@@ -125,22 +138,27 @@ namespace Snake
                 AppleExists = true;
             }
             head.Move(currentDirection);
-            drawPoints();
-            isPressed = false; // HAVE TO BE LAST!
+            isPressed = false; // HAS TO BE LAST!
         }
 
         private void Death()
         {
             gameLoop.Stop();
+            // To-Do:
+            //          Play some wacky sound
+            //          Kill myself
             MessageBox.Show("GAME OVER! / TODO: coś na koniec gry");
             System.Threading.Thread.Sleep(2000);
-            this.Close();
+            gameLoop.Dispose();
+            length = 4;
         }
 
         private void Eating()
         {
+            bool eaten = true;
             AppleExists = false;
             length++;
+            drawPoints(eaten);
         }
 
         private bool isHeadTile(Tile tile)
@@ -186,10 +204,19 @@ namespace Snake
         // counter variables
         private Font f = new Font("Verdana", 20, FontStyle.Bold);
         private SolidBrush sb = new SolidBrush(Color.White);
-        private void drawPoints()
+        private void drawPoints(bool eaten)
         {
-            graphicsPoints.Clear(Color.Black); ;
-            graphicsPoints.DrawString((length * 100).ToString(), f, sb, 7, 7);
+            if (eaten)
+            {
+                graphicsPoints.Clear(Color.Black); ;
+                graphicsPoints.DrawString((length * 100).ToString(), f, sb, 7, 7);
+            }
+
+        }
+
+        private void Counter_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

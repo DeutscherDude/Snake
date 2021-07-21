@@ -92,6 +92,7 @@ namespace Snake
             this.Counter.Name = "Counter";
             this.Counter.Size = new System.Drawing.Size(150, 50);
             this.Counter.TabIndex = 5;
+            this.Counter.Paint += new System.Windows.Forms.PaintEventHandler(this.Counter_Paint);
             // 
             // Form1
             // 
