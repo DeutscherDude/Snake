@@ -37,6 +37,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.DirectoryServices" />
@@ -56,6 +57,7 @@
     <Compile Include="Apples.cs" />
     <Compile Include="Collision.cs" />
     <Compile Include="Direction.cs" />
+    <Compile Include="Eyes.cs" />
     <Compile Include="IApple.cs" />
     <Compile Include="MessageConsole.cs" />
     <Compile Include="MovingHandler.cs" />

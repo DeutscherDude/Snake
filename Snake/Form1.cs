@@ -107,9 +107,10 @@ namespace Snake
                 {
                     Death();
                 }
+                
 
                 // adding tail
-                
+
                 removeTail();
                 tile.CheckState();
                 if (tile.isApple)
@@ -125,12 +126,15 @@ namespace Snake
                     graphics.FillRectangle(new SolidBrush(tile.TileColor), tile.getTile());
                 }
 
+                Eyes.getEyesPos(graphics, tile, currentDirection);
+
                 if (tile.isHead)
                 {
                     tile.isHead = false;
                     tile.isSnake = true;
                 }
             }
+
 
             if (AppleExists == false)
             {
