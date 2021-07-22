@@ -38,33 +38,29 @@ namespace Snake
                 switch (direction)
                 {
                     case Direction.Up:
-                        x1 = 8;
-                        y1 = 10;
-                        x2 = 19;
-                        y2 = 10;
+                        x1 = 5;
+                        x2 = 18;
+                        y1 = y2 = 9;
                         break;
                     case Direction.Down:
-                        x1 = 8;
-                        y1 = 17;
-                        x2 = 19;
-                        y2 = 17;
+                        x1 = 5;
+                        x2 = 18;
+                        y1 = y2 = 13;
                         break;
                     case Direction.Left:
-                        x1 = 10;
-                        y1 = 8;
-                        x2 = 10;
-                        y2 = 19;
+                        x1 = x2 = 9;
+                        y1 = 5;
+                        y2 = 18;
                         break;
                     case Direction.Right:
-                        x1 = 17;
-                        y1 = 8;
-                        x2 = 17;
-                        y2 = 19;
+                        x1 = x2 = 13;
+                        y1 = 5;
+                        y2 = 18;
                         break;
                 }
 
-                g.FillEllipse(white, tileRect.X + x1, tileRect.Y + y1, 5, 5);
-                g.FillEllipse(white, tileRect.X + x2, tileRect.Y + y2, 5, 5);
+                g.FillEllipse(white, tileRect.X + x1, tileRect.Y + y1, 9, 9);
+                g.FillEllipse(white, tileRect.X + x2, tileRect.Y + y2, 9, 9);
             }
         }
     }

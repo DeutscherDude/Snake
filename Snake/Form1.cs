@@ -107,7 +107,7 @@ namespace Snake
                 {
                     Death();
                 }
-                Eyes.getEyesPos(tile, currentDirection);
+                
 
                 // adding tail
 
@@ -125,6 +125,8 @@ namespace Snake
                 {
                     graphics.FillRectangle(new SolidBrush(tile.TileColor), tile.getTile());
                 }
+
+                Eyes.getEyesPos(graphics, tile, currentDirection);
 
                 if (tile.isHead)
                 {
