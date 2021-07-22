@@ -107,9 +107,10 @@ namespace Snake
                 {
                     Death();
                 }
+                Eyes.getEyesPos(tile, currentDirection);
 
                 // adding tail
-                
+
                 removeTail();
                 tile.CheckState();
                 if (tile.isApple)
@@ -131,6 +132,7 @@ namespace Snake
                     tile.isSnake = true;
                 }
             }
+
 
             if (AppleExists == false)
             {
