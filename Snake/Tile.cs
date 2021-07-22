@@ -18,6 +18,7 @@ namespace Snake
         public bool isSnake { get; set; }
         public bool isApple { get; set; }
         public bool isHead { get; set; }
+        public bool hasEyes { get; set; }
 
         public Tile(int x, int y, int width, int height)
         {
