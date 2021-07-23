@@ -36,6 +36,7 @@ namespace Snake
             this.Pause = new System.Windows.Forms.Button();
             this.Start = new System.Windows.Forms.Button();
             this.Counter = new System.Windows.Forms.Panel();
+            this.buttons = new System.Windows.Forms.Panel();
             this.SuspendLayout();
             // 
             // gamePanel
@@ -101,6 +102,7 @@ namespace Snake
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.SystemColors.ControlDark;
             this.ClientSize = new System.Drawing.Size(536, 700);
+            this.Controls.Add(this.buttons);
             this.Controls.Add(this.Counter);
             this.Controls.Add(this.Start);
             this.Controls.Add(this.Pause);
@@ -124,6 +126,7 @@ namespace Snake
         private System.Windows.Forms.Button Pause;
         private System.Windows.Forms.Button Start;
         private System.Windows.Forms.Panel Counter;
+        private System.Windows.Forms.Panel buttons;
     }
 }
 

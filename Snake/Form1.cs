@@ -15,6 +15,7 @@ namespace Snake
     {
         Graphics graphics;
         Graphics graphicsPoints;
+        Graphics graphicsButtons;
         List<Tile> tiles;
         SnakeItself head;
 
@@ -36,6 +37,7 @@ namespace Snake
             InitializeComponent();
             graphics = gamePanel.CreateGraphics();
             graphicsPoints = Counter.CreateGraphics();
+            graphicsButtons = buttons.CreateGraphics();
             _width = gamePanel.Width;
             _height = gamePanel.Height;
             tiles = generateTiles();
@@ -219,6 +221,11 @@ namespace Snake
         }
 
         private void Counter_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void buttons_Paint(object sender, PaintEventArgs e)
         {
 
         }
