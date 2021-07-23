@@ -95,6 +95,15 @@ namespace Snake
             this.Counter.TabIndex = 5;
             this.Counter.Paint += new System.Windows.Forms.PaintEventHandler(this.Counter_Paint);
             // 
+            // buttons
+            // 
+            this.buttons.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.buttons.Location = new System.Drawing.Point(13, 530);
+            this.buttons.Name = "buttons";
+            this.buttons.Size = new System.Drawing.Size(355, 100);
+            this.buttons.TabIndex = 6;
+            this.buttons.Paint += new System.Windows.Forms.PaintEventHandler(this.buttons_Paint);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);

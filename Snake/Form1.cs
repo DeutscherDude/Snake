@@ -47,8 +47,12 @@ namespace Snake
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            //Chuj w dupie kurwa 2137
 
+        }
+
+        private void showButtons()
+        {
+            ButtonsDrawing.DrawPauseButton(graphicsButtons);
         }
 
         private void generateHead()
@@ -94,6 +98,7 @@ namespace Snake
 
         private void gameLoop_Tick(object sender, EventArgs e)
         {
+            showButtons();
             foreach (var tile in tiles)
             {
                 if (isHeadTile(tile))
