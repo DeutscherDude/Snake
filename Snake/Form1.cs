@@ -15,8 +15,10 @@ namespace Snake
     {
         Graphics graphics;
         Graphics graphicsPoints;
+        Graphics graphicsButtons;
         List<Tile> tiles;
         SnakeItself head;
+        Buttons button;
 
         List<int> snakeIndexes;
 
@@ -28,6 +30,7 @@ namespace Snake
 
         Direction currentDirection = Direction.Up;
 
+        private Point mousePos;
         private bool isPressed = false;
         public Form1()
             : base()
@@ -36,6 +39,7 @@ namespace Snake
             InitializeComponent();
             graphics = gamePanel.CreateGraphics();
             graphicsPoints = Counter.CreateGraphics();
+            graphicsButtons = buttons.CreateGraphics();
             _width = gamePanel.Width;
             _height = gamePanel.Height;
             tiles = generateTiles();
@@ -45,8 +49,19 @@ namespace Snake
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            //Chuj w dupie kurwa 2137
 
+        }
+
+        private void showButtons()
+        {
+            ButtonsDrawing.DrawPauseButton(buttons, graphicsButtons, mousePos);
+            Buttons? but = ButtonsDrawing.GetButton();
+            if (but != null)
+            {
+                button = but.Value;
+            }
+            else
+                button = Buttons.None;
         }
 
         private void generateHead()
@@ -92,6 +107,8 @@ namespace Snake
 
         private void gameLoop_Tick(object sender, EventArgs e)
         {
+            showButtons();
+
             foreach (var tile in tiles)
             {
                 if (isHeadTile(tile))
@@ -221,6 +238,39 @@ namespace Snake
         private void Counter_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void buttons_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void buttons_MouseMove(object sender, MouseEventArgs e)
+        {
+            mousePos = e.Location;
+        }
+
+        private void buttons_MouseDown(object sender, MouseEventArgs e)
+        {
+            if(e.Button == MouseButtons.Left)
+            {
+                if(button == Buttons.Pause)
+                {
+                    pause();
+                }
+            }
+        }
+
+        private void pause()
+        {
+            if (gameLoop.Enabled == true)
+            {
+                gameLoop.Enabled = false;
+            }
+            else if (gameLoop.Enabled == false)
+            {
+                gameLoop.Enabled = true;
+            }
         }
     }
 }
