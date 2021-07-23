@@ -143,7 +143,7 @@ namespace Snake
                     graphics.FillRectangle(new SolidBrush(tile.TileColor), tile.getTile());
                 }
 
-                Eyes.getEyesPos(graphics, tile, currentDirection);
+                Eyes.drawEyes(graphics, tile, currentDirection);
 
                 if (tile.isHead)
                 {
