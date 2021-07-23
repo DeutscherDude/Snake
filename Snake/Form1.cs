@@ -49,7 +49,7 @@ namespace Snake
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            MessageConsole.LogMessage("Starting");
         }
 
         private void showButtons()
@@ -86,6 +86,7 @@ namespace Snake
 
         private void button1_Click(object sender, EventArgs e)
         {
+            MessageConsole.LogMessage("Clicked Exit button");
             this.Close();
         }
 
@@ -103,7 +104,6 @@ namespace Snake
                 return false;
             }
         }
-
 
         private void gameLoop_Tick(object sender, EventArgs e)
         {
@@ -124,9 +124,6 @@ namespace Snake
                 {
                     Death();
                 }
-                
-
-                // adding tail
 
                 removeTail();
                 tile.CheckState();
@@ -134,10 +131,7 @@ namespace Snake
                 {
                     graphics.FillEllipse(new SolidBrush(tile.TileColor), tile.getTile());
                 }
-                //else if (tile.isHead)
-                //{
-                //    graphics.DrawImage();
-                //}
+
                 else
                 {
                     graphics.FillRectangle(new SolidBrush(tile.TileColor), tile.getTile());
@@ -164,6 +158,7 @@ namespace Snake
 
         private void Death()
         {
+            MessageConsole.LogMessage("Ending");
             gameLoop.Stop();
             // To-Do:
             //          Play some wacky sound
@@ -176,6 +171,7 @@ namespace Snake
 
         private void Eating()
         {
+            MessageConsole.LogMessage("Eating");
             bool eaten = true;
             AppleExists = false;
             length++;
@@ -201,15 +197,16 @@ namespace Snake
                 snakeIndexes.RemoveAt(lastIndex - 1);
             }
         }
-
         private void button2_Click(object sender, EventArgs e)
         {
+            MessageConsole.LogMessage("Clicked Start Button");
             gamePanel.Visible = true;
             gameLoop.Start();
         }
 
         private void button1_Click_1(object sender, EventArgs e)
         {
+            MessageConsole.LogMessage("Clicked Pause Button");
             if (gameLoop.Enabled == true)
             {
                 gameLoop.Enabled = false;
@@ -256,6 +253,7 @@ namespace Snake
             {
                 if(button == Buttons.Pause)
                 {
+                    MessageConsole.LogMessage("Clicked Pause Button");
                     pause();
                 }
             }
