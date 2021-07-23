@@ -18,6 +18,7 @@ namespace Snake
         Graphics graphicsButtons;
         List<Tile> tiles;
         SnakeItself head;
+        Buttons button;
 
         List<int> snakeIndexes;
 
@@ -53,7 +54,14 @@ namespace Snake
 
         private void showButtons()
         {
-            ButtonsDrawing.DrawPauseButton(graphicsButtons, mousePos);
+            ButtonsDrawing.DrawPauseButton(buttons, graphicsButtons, mousePos);
+            Buttons? but = ButtonsDrawing.GetButton();
+            if (but != null)
+            {
+                button = but.Value;
+            }
+            else
+                button = Buttons.None;
         }
 
         private void generateHead()
@@ -240,6 +248,29 @@ namespace Snake
         private void buttons_MouseMove(object sender, MouseEventArgs e)
         {
             mousePos = e.Location;
+        }
+
+        private void buttons_MouseDown(object sender, MouseEventArgs e)
+        {
+            if(e.Button == MouseButtons.Left)
+            {
+                if(button == Buttons.Pause)
+                {
+                    pause();
+                }
+            }
+        }
+
+        private void pause()
+        {
+            if (gameLoop.Enabled == true)
+            {
+                gameLoop.Enabled = false;
+            }
+            else if (gameLoop.Enabled == false)
+            {
+                gameLoop.Enabled = true;
+            }
         }
     }
 }

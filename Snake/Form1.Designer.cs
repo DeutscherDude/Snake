@@ -103,6 +103,7 @@ namespace Snake
             this.buttons.Size = new System.Drawing.Size(355, 100);
             this.buttons.TabIndex = 6;
             this.buttons.Paint += new System.Windows.Forms.PaintEventHandler(this.buttons_Paint);
+            this.buttons.MouseDown += new System.Windows.Forms.MouseEventHandler(this.buttons_MouseDown);
             this.buttons.MouseMove += new System.Windows.Forms.MouseEventHandler(this.buttons_MouseMove);
             // 
             // Form1
