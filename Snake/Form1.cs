@@ -29,6 +29,7 @@ namespace Snake
 
         Direction currentDirection = Direction.Up;
 
+        private Point mousePos;
         private bool isPressed = false;
         public Form1()
             : base()
@@ -52,7 +53,7 @@ namespace Snake
 
         private void showButtons()
         {
-            ButtonsDrawing.DrawPauseButton(graphicsButtons);
+            ButtonsDrawing.DrawPauseButton(graphicsButtons, mousePos);
         }
 
         private void generateHead()
@@ -99,6 +100,7 @@ namespace Snake
         private void gameLoop_Tick(object sender, EventArgs e)
         {
             showButtons();
+
             foreach (var tile in tiles)
             {
                 if (isHeadTile(tile))
@@ -233,6 +235,11 @@ namespace Snake
         private void buttons_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void buttons_MouseMove(object sender, MouseEventArgs e)
+        {
+            mousePos = e.Location;
         }
     }
 }
