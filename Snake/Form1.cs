@@ -27,6 +27,8 @@ namespace Snake
         private int length = 4;
         public bool AppleExists = false;
         public bool AppleEaten = false;
+        public bool MusicPlaying = false;
+        MusicPlayer player = new MusicPlayer();
 
         Direction currentDirection = Direction.Up;
 
@@ -160,11 +162,14 @@ namespace Snake
         {
             MessageConsole.LogMessage("Ending");
             gameLoop.Stop();
-            // To-Do:
-            //          Play some wacky sound
-            //          Kill myself
+            player.pauseMusic(MusicPlaying);
+            player.LoadDeathSoundAsync();
+            
             MessageBox.Show("GAME OVER! / TODO: coś na koniec gry");
-            System.Threading.Thread.Sleep(2000);
+            
+            System.Threading.Thread.Sleep(1500);
+            
+            MusicPlaying = false;
             gameLoop.Dispose();
             length = 4;
         }
@@ -201,6 +206,11 @@ namespace Snake
         {
             MessageConsole.LogMessage("Clicked Start Button");
             gamePanel.Visible = true;
+            if (MusicPlaying == false)
+            { 
+                player.readMusic();
+                MusicPlaying = true;
+            }
             gameLoop.Start();
         }
 
@@ -209,13 +219,17 @@ namespace Snake
             MessageConsole.LogMessage("Clicked Pause Button");
             if (gameLoop.Enabled == true)
             {
+                player.pauseMusic(MusicPlaying);
                 gameLoop.Enabled = false;
                 Pause.Text = "Unpause";
+                MusicPlaying = false;
             }
             else if (gameLoop.Enabled == false)
             {
+                player.readMusic();
                 Pause.Text = "Pause";
                 gameLoop.Enabled = true;
+                MusicPlaying = true;
             }
         }
 
@@ -269,6 +283,11 @@ namespace Snake
             {
                 gameLoop.Enabled = true;
             }
+        }
+
+        private void bindingNavigator1_RefreshItems(object sender, EventArgs e)
+        {
+
         }
     }
 }
